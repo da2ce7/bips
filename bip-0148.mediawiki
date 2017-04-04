@@ -37,16 +37,12 @@ While this BIP is active, all blocks must set the nVersion header top 3 bits to 
 === Reference implementation ===
 
 <pre>
-
-
 // Check if Segregated Witness is Locked In
 bool IsWitnessLockedIn(const CBlockIndex* pindexPrev, const Consensus::Params& params)
 {
     LOCK(cs_main);
-    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_SEGWIT, versionbitscache)
-        == THRESHOLD_LOCKED_IN);
+    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_SEGWIT, versionbitscache) == THRESHOLD_LOCKED_IN);
 }
-
 
 // BIP148 mandatory segwit signalling.
 int64_t nMedianTimePast = pindex->GetMedianTimePast();
